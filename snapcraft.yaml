@@ -18,6 +18,8 @@ apps:
       - network-bind
   influx:
     command: usr/bin/influx
+    plugs:
+      - network
 
 parts:
   common:
