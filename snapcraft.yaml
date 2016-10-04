@@ -1,0 +1,31 @@
+name: influxdb
+version: 1.0.0
+architectures: [amd64]
+summary: InfluxDB is an open-source, distributed, time series database
+description: |
+  InfluxDB is an open source database written in Go specifically to
+  handle time series data with high availability and high performance
+  requirements. InfluxDB installs in minutes without external
+  dependencies, yet is flexible and scalable enough for complex deployments.
+grade: devel
+confinement: strict
+
+apps:
+  influxd:
+    command: bin/influxd.wrapper
+    daemon: simple
+    plugs:
+      - network-bind
+  influx:
+    command: usr/bin/influx
+
+parts:
+  common:
+    plugin: dump
+    source: .
+    snap:
+      - conf/default-influxdb.conf
+      - bin/influxd.wrapper
+  influxdb:
+    plugin: dump
+    source: https://dl.influxdata.com/influxdb/releases/influxdb-1.0.0_linux_amd64.tar.gz
