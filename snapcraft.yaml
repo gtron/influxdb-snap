@@ -1,5 +1,5 @@
 name: influxdb
-version: 1.0.0
+version: 1.0.0-1
 architectures: [amd64]
 summary: InfluxDB is an open-source, distributed, time series database
 description: |
